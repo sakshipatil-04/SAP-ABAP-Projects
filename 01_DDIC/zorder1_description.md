@@ -1,15 +1,16 @@
-Table Name: ZORDER_1
+Project: Order Management Tables
 
-Description:
-This table stores order header information.
+1. ZORDER_1 (Header Table)
+- Stores order main details
 
-Fields:
-- ORD_NO (Order Number)
-- ORD_DATE (Order Date)
-- PAY_MODE (Payment Mode)
-- TOTAL_AMO (Total Amount)
+2. ZORDER_ITEM_1 (Item Table)
+- Stores order item details
+
+Relationship:
+- ORD_NO is common field
+- One order can have multiple items
 
 Concepts Used:
 - Primary Key
-- Data Elements
-- Domains
+- Foreign Key
+- Header-Item Relationship
