@@ -1,0 +1,69 @@
+*&---------------------------------------------------------------------*
+*& Report  ZTRAINING_REPORT
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZTRAINING_REPORT.
+
+
+TYPES : BEGIN OF TY_ZTRAINING_HDR,
+        TRN_ID TYPE ZTRAINING_HDR-TRN_ID,
+        TRN_NAME TYPE ZTRAINING_HDR-TRN_NAME,
+        TRAINERR TYPE ZTRAINING_HDR-TRAINERR,
+        TRN_DATE TYPE ZTRAINING_HDR-TRN_DATE,
+        LOCATION_1 TYPE ZTRAINING_HDR-LOCATION_1,
+  END OF TY_ZTRAINING_HDR.
+
+DATA : IT_ZTRAINING_HDR TYPE TABLE OF TY_ZTRAINING_HDR,
+       WA_ZTRAINING_HDR TYPE TY_ZTRAINING_HDR.
+
+SELECT TRN_ID
+       TRN_NAME
+       TRAINERR
+       TRN_DATE
+       LOCATION_1
+  FROM ZTRAINING_HDR
+  INTO TABLE IT_ZTRAINING_HDR.
+
+WRITE : / 'TRAINING MANAGEMENT REPORT'.
+ULINE.
+
+WRITE : / SY-VLINE,
+          'TRAINING ID',
+          20 SY-VLINE,
+          'TRAINING NAME',
+          40 SY-VLINE,
+          'TRAINER',
+          60 SY-VLINE,
+          'DATE',
+          80 SY-VLINE,
+          'LOCATION',
+          100 SY-VLINE.
+
+WRITE : / SY-ULINE(100).
+
+
+LOOP AT IT_ZTRAINING_HDR INTO WA_ZTRAINING_HDR.
+  WRITE :/ SY-VLINE,
+           WA_ZTRAINING_HDR-TRN_ID,
+           20 SY-VLINE,
+           WA_ZTRAINING_HDR-TRN_NAME,
+           40 SY-VLINE,
+           WA_ZTRAINING_HDR-TRAINERR,
+           60 SY-VLINE,
+           WA_ZTRAINING_HDR-TRN_DATE,
+           80 SY-VLINE,
+           WA_ZTRAINING_HDR-LOCATION_1,
+           100 SY-VLINE,
+           / SY-ULINE(100).
+ENDLOOP.
+
+DATA : LV_COUNT TYPE I.
+
+DESCRIBE TABLE IT_ZTRAINING_HDR LINES LV_COUNT.
+
+WRITE : /.
+WRITE : / 'TOTAL RECORDS :', LV_COUNT.
