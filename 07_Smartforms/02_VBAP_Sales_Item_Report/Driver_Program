@@ -1,0 +1,22 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSMARTFORMS_REPORT_3
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZSMARTFORMS_REPORT_3.
+
+DATA : V_SMARTFORMS TYPE RS38L_FNAM.
+
+CALL FUNCTION 'SSF_FUNCTION_MODULE_NAME'
+  EXPORTING
+    FORMNAME = 'ZSAKSHII_SMARTFORMS_8'
+  IMPORTING
+    FM_NAME  = V_SMARTFORMS.
+
+
+CALL FUNCTION V_SMARTFORMS
+  EXPORTING
+    IM_MATKL = '002'.
