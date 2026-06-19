@@ -1,0 +1,20 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSMARTFORM_INVOICE_REPORT
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZSMARTFORM_INVOICE_REPORT.
+
+DATA : V_SMARTFORMS TYPE RS38L_FNAM.
+
+CALL FUNCTION 'SSF_FUNCTION_MODULE_NAME'
+  EXPORTING
+    FORMNAME = 'ZSMARTFORM_INVOICE'
+  IMPORTING
+    FM_NAME  = V_SMARTFORMS.
+
+
+CALL FUNCTION V_SMARTFORMS.
